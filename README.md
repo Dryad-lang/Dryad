@@ -1,4 +1,2 @@
 # Dryad
 Dryad Programing Language
-
-.
