@@ -1,17 +1,3 @@
-# Dryad
-Dryad Programing Language
-
-
-
-
-
-
-
-
-
-
-
-
 # Dryad shell
 
 ## Comandos
