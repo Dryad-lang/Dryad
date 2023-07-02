@@ -156,8 +156,8 @@ A linguagem permite a atribuição de valores a variáveis.
 
 Exemplos:
 - Atribuição: `{a = 5 + 2; a;}`
-- Incremento: `{a = 5; --a;}`
-- Decremento: `{a = 5; ++a;}`
+- Incremento: `{a = 5; ++a;}`
+- Decremento: `{a = 5; --a;}`
 - Atribuição com adição: `{a = 5 + 2; a += 2;}`
 - Atribuição com subtração: `{a = 5 + 2; a -= 2;}`
 - Atribuição com multiplicação: `{a = 5 + 2; a *= 2;}`
