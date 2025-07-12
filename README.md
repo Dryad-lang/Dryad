@@ -1,255 +1,296 @@
-# Dryad shell
+# Dryad Programming Language
 
-## Comandos
 
-A linguagem possui os seguintes comandos disponíveis:
+Dryad é uma linguagem de programação moderna, interpretada, com sintaxe expressiva e tipagem dinâmica.
+=======
+![Dryad Logo](https://img.shields.io/badge/Dryad-v0.1.0-green)
+![Oak Package Manager](https://img.shields.io/badge/Oak-Modular-blue)
+![License](https://img.shields.io/badge/License-MIT-blue)
+[![Rust](https://github.com/Dryad-lang/source/actions/workflows/rust.yml/badge.svg)](https://github.com/Dryad-lang/source/actions/workflows/rust.yml)
 
-### Comando `run`
+## 🎯 Pilares de Desenvolvimento
 
-O comando `run` é utilizado para executar um programa Dryad.
+1. **Test-Driven Development (TDD)** - Cada funcionalidade possui testes abrangentes
+2. **Sistema de Erros Padronizado** - Códigos de erro categorizados e documentados
+3. **CLI Intuitivo** - Interface de linha de comando rica em funcionalidades
+4. **Gestor de Pacotes (Oak)** - Ferramenta independente para gerenciamento de projetos
+5. **Modularidade** - Componentes desacoplados para máxima testabilidade
+6. **Completude sem Complexidade** - Código completo mas sem over-engineering
 
-#### Descrição
+## 📦 Estrutura do Projeto
 
-Executa um programa Dryad a partir de um arquivo.
+## ✨ Principais Características
 
-#### Argumentos
+- 🚀 **Sintaxe Simples**: Fácil de aprender e usar
+- 📦 **Sistema Oak**: Package manager modular integrado
+- 🔗 **Imports/Exports**: Sistema modular avançado (`using` vs `use`)
+- 📚 **Common Libraries**: Bibliotecas nativas organizadas
+- ⚡ **Performance**: Interpretador otimizado em Rust
+- 🛠️ **CLI Moderna**: Interface de linha de comando completa
+- 🔧 **APIs Externas**: Suporte para modificação do oak package manager e cli.
 
-- `file` (obrigatório): O arquivo contendo o programa Dryad a ser executado. O arquivo deve ter a extensão ".dyd".
+## 🚀 Início Rápido
 
-#### Uso
+### 1. Instalação
 
-```
-dryad run <file>
-```
+```bash
+# Clone o repositório
+git clone https://github.com/dryad-lang/dryad.git
+cd dryad
 
-Exemplo:
-```
-dryad run programa.dyd
-```
+# Compile o projeto
+cargo build --release
 
-### Comando `help`
-
-O comando `help` é utilizado para exibir a ajuda.
-
-#### Descrição
-
-Exibe a lista de comandos disponíveis e suas descrições.
-
-#### Uso
-
-```
-dryad help
-```
-
-# Oak shell
-
-## Comandos
-
-A linguagem possui os seguintes comandos disponíveis:
-
-### Comando `init`
-
-O comando `init` é utilizado para criar um novo projeto.
-
-#### Descrição
-
-Cria um novo projeto com as informações fornecidas.
-
-#### Argumentos
-
-- `name` (obrigatório): O nome do projeto.
-- `description` (obrigatório): A descrição do projeto.
-- `version` (obrigatório): A versão do projeto.
-- `author` (obrigatório): O autor do projeto.
-- `license` (obrigatório): A licença do projeto.
-- `repository` (obrigatório): O repositório do projeto.
-
-#### Uso
-
-```
-oak init
+# Execute um script
+./target/release/dryad script.dryad
 ```
 
-### Comando `syncmodules`
+### 2. Primeiro Programa
 
-O comando `syncmodules` é utilizado para sincronizar os módulos externos.
+```dryad
+// hello.dryad
+print("Hello, Dryad!");
 
-#### Descrição
+let nome = "Mundo";
+print("Olá, " + nome + "!");
 
-Sincroniza os módulos externos do projeto.
+// Classes com métodos estáticos
+class Math {
+    static function square(x) {
+        return x * x;
+    }
+}
 
-#### Uso
-
-```
-oak syncmodules
-```
-
-### Comando `build`
-
-O comando `build` é utilizado para construir o projeto.
-
-#### Descrição
-
-Constrói o projeto.
-
-#### Uso
-
-```
-oak build
+let resultado = Math.square(5);
+print("5² = " + resultado);
 ```
 
-### Comando `init-extlib-project`
+### 3. Sistema Oak (Package Manager)
 
-O comando `init-extlib-project` é utilizado para criar um novo projeto externo.
+```bash
+# Inicializar projeto Oak
+dryad oak init
 
-#### Descrição
+# Listar dependências
+dryad oak list
 
-Cria um novo projeto externo com as informações fornecidas.
-
-#### Argumentos
-
-- `name` (obrigatório): O nome do projeto externo.
-- `description` (obrigatório): A descrição do projeto externo.
-- `version` (obrigatório): A versão do projeto externo.
-- `author` (obrigatório): O autor do projeto externo.
-- `license` (obrigatório): A licença do projeto externo.
-- `repository` (obrigatório): O repositório do projeto externo.
-
-#### Uso
-
-```
-oak init-extlib-project
+# Adicionar dependência (futuro)
+dryad oak add math-utils
 ```
 
-Exemplo:
-```
-oak init-extlib-project
-```
+### 4. Sistema de Imports
 
+```dryad
+// Bibliotecas do sistema (using)
+using IO.Console;
+using Core.Types;
 
-# Documentação da Linguagem
+// Arquivos locais (use)
+use './utils/helper.dryad';
+use '../shared/common.dryad';
 
-## Expressões Matemáticas
-
-A linguagem oferece suporte a expressões matemáticas básicas, como adição, subtração, multiplicação, divisão, módulo e exponenciação.
-
-Exemplos:
-- Operador de adição: `1 + 1;`
-- Operador de subtração: `10 - 1;`
-- Operador de multiplicação: `3 * 5;`
-- Operador de divisão: `15 / 3;`
-- Operador de módulo: `15 % 3;`
-- Operador de exponenciação: `3 ** 2;`
-
-## Blocos e Funções
-
-A linguagem suporta o uso de blocos de código e a definição de funções.
-
-Exemplos:
-- Blocos: `{1 + 2; 2 * 3;}`
-- Escopos: `{ {a = 5;} a;}` (retorna o valor de `a`)
-- Funções: `{ square = function(x) { x*x; }; square(5); }` (retorna 25)
-
-## Atribuição de Variáveis
-
-A linguagem permite a atribuição de valores a variáveis.
-
-Exemplos:
-- Atribuição: `{a = 5 + 2; a;}`
-- Incremento: `{a = 5; ++a;}`
-- Decremento: `{a = 5; --a;}`
-- Atribuição com adição: `{a = 5 + 2; a += 2;}`
-- Atribuição com subtração: `{a = 5 + 2; a -= 2;}`
-- Atribuição com multiplicação: `{a = 5 + 2; a *= 2;}`
-- Atribuição com divisão: `{a = 5 + 2; a /= 2;}`
-- Atribuição com módulo: `{a = 5 + 2; a %= 2;}`
-- Atribuição com operação bitwise AND: `{a = 5 + 2; a &= 2;}`
-- Atribuição com operação bitwise OR: `{a = 5 + 2; a |= 2;}`
-- Atribuição com operação bitwise XOR: `{a = 5 + 2; a ^= 2;}`
-- Atribuição com operação de deslocamento para a esquerda: `{a = 5 + 2; a <<= 2;}`
-- Atribuição com operação de deslocamento para a direita: `{a = 5 + 5; a >>= 2;}`
-
-## Condições
-
-A linguagem oferece suporte a estruturas condicionais, como `if` e `if-else`, para controlar o fluxo do programa.
-
-Exemplos:
-- `if` de sucesso: `{a = 5; if(a == 5) a = 6; a;}`
-- `if` de falha: `{a = 5; if(a != 5) a = 6; a;}`
-- `if-else` de sucesso: `{a = 5; if(a == 5) a = 6; else a = 7; a;}`
-- `if-else` de falha: `{a = 5; if(a != 5
-
-) a = 6; else a = 7; a;}`
-
-## Loops
-
-A linguagem suporta loops `while` e `for` para repetição de código.
-
-Exemplos:
-- `while`: `{a = 10; while (a < 20) ++a; a;}`
-- `for`: `{a = -10; for (a = 0; a < 10; ++a) 0; a;}`
-- `do-while`: `{a = 5; do ++a; while (a < 10);}`
-
-## Operadores Lógicos
-
-A linguagem possui operadores lógicos, como `&&` (E lógico), `||` (OU lógico) e `!` (NÃO lógico).
-
-Exemplos:
-- `&&` lógico: `0 && 5;`
-- `||` lógico: `5 || 0;`
-- `!` lógico: `!5;`
-
-## Operadores Bit a Bit
-
-A linguagem suporta operações bit a bit, como `&` (AND bit a bit), `|` (OR bit a bit), `^` (XOR bit a bit) e `~` (NÃO bit a bit).
-
-Exemplos:
-- `&` bit a bit: `65421 & 255;`
-- `|` bit a bit: `65421 | 255;`
-- `^` bit a bit: `65421 ^ 255;`
-- `~` bit a bit: `~65421;`
-
-## Operadores de Comparação
-
-A linguagem oferece operadores de comparação para avaliar igualdade, desigualdade e relação de ordem entre valores.
-
-Exemplos:
-- Igualdade: `1 == 1;`
-- Desigualdade: `1 != 5;`
-- Inferioridade: `1 < 5;`
-- Superioridade: `1 > 5;`
-- Inferior ou igual: `1 <= 5;`
-- Superior ou igual: `1 >= 5;`
-
-## Expressões Mistas
-
-A linguagem suporta expressões complexas envolvendo diferentes operadores e prioridades.
-
-Exemplos:
-- Expressões complexas: `1+4/5*4+51+(4*(945+94/748)+44+2)+56;`
-- Expressões lógicas complexas: `0 || 45-54/9 && 564 + 485 * 4 || 45 / 6;`
-
-## Manipulação de Strings
-
-A linguagem suporta manipulação de strings, permitindo a atribuição de valores a variáveis do tipo string e a utilização de funções para operações específicas.
-
-Exemplo de atribuição de variáveis:
-- Atribuição de string: `{str = "Hello, world!";}`
-
-Funções disponíveis:
-- `ConsoleWrite(string)`: Imprime uma string no console sem quebra de linha.
-- `ConsoleWriteLine(string)`: Imprime uma string no console com quebra de linha.
-- `ConsoleRead()`: Lê uma linha de texto do console e retorna como uma string.
-- `ConsoleReadLine()`: Lê uma linha de texto do console e retorna como uma string, removendo a quebra de linha.
-- `ConsoleReadKey()`: Lê um caractere do console e retorna como uma string.
-- `ConsoleError(string)`: Imprime uma string de erro no console.
-
-Exemplo de uso das funções de console:
-```
-ConsoleWrite("Hello, ");
-ConsoleWriteLine("world!");
-var input = ConsoleRead();
-ConsoleWriteLine("You entered: " + input);
+// Uso das funcionalidades
+Console.println("Hello World!");
+let type = Types.typeof(42);
+helper.processData();
 ```
 
-Esta é apenas uma documentação inicial como a linguagem se encontra em beta varias coisas poderão ser mudadas no futuro.
+## 📁 Estrutura do Projeto
+>>>>>>> 500814481b729ea2558fa5c85f963935a7b97545
+
+```
+dryad/
+├── crates/
+│   ├── dryad_errors/       # Sistema de erros e códigos padronizados
+│   ├── dryad_lexer/        # Tokenização (análise léxica)
+│   ├── dryad_parser/       # Parser e construção de AST
+│   ├── dryad_runtime/      # Interpretador principal
+│   ├── dryad_cli/          # CLI para rodar código Dryad
+│   └── oak/                # Gestor de pacotes
+├── Cargo.toml              # Workspace principal
+└── README.md
+```
+
+## 🚀 Funcionalidades Implementadas
+
+### ✅ Lexer (Análise Léxica)
+- [x] Tokenização de números (inteiros e decimais)
+- [x] Strings com sequências de escape
+- [x] Identificadores e palavras-chave
+- [x] Operadores aritméticos, lógicos e de comparação
+- [x] Comentários de linha (`//`) e bloco (`/* */`)
+- [x] Tratamento de espaços em branco
+- [x] **24 testes** cobrindo todos os casos
+
+### ✅ Parser (Análise Sintática)
+- [x] Análise recursiva descendente
+- [x] Precedência correta de operadores
+- [x] Expressões aritméticas complexas
+- [x] Operadores lógicos e de comparação
+- [x] Suporte a parênteses
+- [x] **25 testes** validando parsing
+
+### ✅ Runtime/Interpretador
+- [x] Avaliação de expressões aritméticas
+- [x] Operações com strings (concatenação)
+- [x] Operadores lógicos com truthiness
+- [x] Comparações numéricas
+- [x] Tratamento robusto de erros de tipo
+- [x] **30 testes** cobrindo execução
+
+### ✅ Sistema de Erros
+- [x] **Códigos estruturados por categoria**:
+  - 1000-1999: Erros do Lexer
+  - 2000-2999: Erros do Parser
+  - 3000-3999: Erros de Runtime
+  - 4000-4999: Erros do Sistema de Tipos
+  - 5000-5999: Erros de I/O
+  - 6000-6999: Erros do Sistema de Módulos
+  - 7000-7999: Erros de Sintaxe
+  - 8000-8999: Avisos (Warnings)
+  - 9000-9999: Erros de Sistema
+- [x] Mensagens de erro informativas
+- [x] Rastreamento de linha e coluna
+
+### ✅ CLI (dryad)
+- [x] `dryad run <arquivo>` - Executa código Dryad
+- [x] `dryad run <arquivo> --verbose` - Mostra tokens e AST
+- [x] `dryad check <arquivo>` - Valida sintaxe
+- [x] `dryad tokens <arquivo>` - Debug: mostra tokens
+- [x] `dryad repl` - Modo interativo
+- [x] `dryad version` - Informações da versão
+
+### ✅ Gestor de Pacotes (Oak)
+- [x] `oak init <nome>` - Cria novo projeto
+- [x] `oak info` - Informações do projeto
+- [x] `oak list` - Lista dependências
+- [x] `oak install <pacote>` - Adiciona dependência (estrutura pronta)
+- [x] `oak remove <pacote>` - Remove dependência
+- [x] `oak run <script>` - Executa scripts definidos
+- [x] `oak clean` - Limpa cache
+- [x] Arquivo `oaklibs.json` com configuração completa
+
+## 🧪 Cobertura de Testes
+
+**Total: 79 testes passando**
+- Lexer: 24 testes
+- Parser: 25 testes  
+- Runtime: 30 testes
+- Sistema de erros integrado em todos os componentes
+
+## ▶️ Exemplos de Uso
+
+### Executando código Dryad
+```bash
+# Expressão simples
+echo "5 + 3 * 2" > exemplo.dryad
+cargo run --bin dryad run exemplo.dryad
+# Output: 11
+
+# Modo verboso (mostra tokens e AST)
+cargo run --bin dryad run exemplo.dryad --verbose
+
+# Validar sintaxe
+cargo run --bin dryad check exemplo.dryad
+```
+
+### Criando projeto com Oak
+```bash
+# Criar novo projeto
+cargo run --bin oak init meu-projeto
+
+# Navegar e ver informações
+cd meu-projeto
+cargo run --bin oak info
+cargo run --bin oak list
+```
+
+### Modo Interativo (REPL)
+```bash
+cargo run --bin dryad repl
+# dryad> 2 + 3
+# => 5
+# dryad> "Hello" + " World"
+# => Hello World
+```
+
+## 🏗️ Pipeline de Execução
+
+```
+Código Fonte (.dryad)
+    ↓
+Lexer → Tokens
+    ↓  
+Parser → AST (Abstract Syntax Tree)
+    ↓
+Interpreter → Resultado
+```
+
+## 🚀 Começando
+
+```bash
+# Build do projeto
+cargo build
+
+# Executar todos os testes
+cargo test
+
+# Executar CLI
+cargo run --bin dryad --help
+
+# Executar Oak
+cargo run --bin oak --help
+```
+
+## 📋 Sintaxe Suportada (v0.1)
+
+### Tipos de Dados
+- **Números**: `42`, `3.14`, `-5`
+- **Strings**: `"Hello World"`, `"Olá\nMundo"`
+- **Booleanos**: `true`, `false`
+- **Null**: `null`
+
+### Operadores
+- **Aritméticos**: `+`, `-`, `*`, `/`
+- **Comparação**: `==`, `!=`, `<`, `>`, `<=`, `>=`
+- **Lógicos**: `&&`, `||`, `!`
+
+### Exemplos Válidos
+```dryad
+// Aritmética
+(5 + 3) * 2
+
+// Comparações
+10 > 5
+
+// Lógica
+true && false || !true
+
+// Strings
+"Hello" + " " + "World"
+
+// Expressões complexas
+(2 + 3) * 4 == 20 && true
+```
+
+## 🔮 Próximas Funcionalidades
+
+- [ ] Declarações de variáveis (`let x = 5;`)
+- [ ] Estruturas de controle (`if`, `while`, `for`)
+- [ ] Funções definidas pelo usuário
+- [ ] Arrays e objetos
+- [ ] Sistema de módulos e imports
+- [ ] Instalação real de pacotes no Oak
+
+## 🤝 Contribuindo
+
+Este projeto segue rigorosamente os princípios de TDD. Para contribuir:
+
+1. Escreva testes para a nova funcionalidade
+2. Implemente a funcionalidade para passar nos testes
+3. Refatore mantendo todos os testes passando
+4. Adicione códigos de erro apropriados quando necessário
+
+## 📄 Licença
+
+MIT License - veja o arquivo LICENSE para detalhes.
