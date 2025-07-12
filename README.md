@@ -96,7 +96,6 @@ helper.processData();
 ```
 
 ## 📁 Estrutura do Projeto
->>>>>>> 500814481b729ea2558fa5c85f963935a7b97545
 
 ```
 dryad/
@@ -114,29 +113,17 @@ dryad/
 ## 🚀 Funcionalidades Implementadas
 
 ### ✅ Lexer (Análise Léxica)
-- [x] Tokenização de números (inteiros e decimais)
-- [x] Strings com sequências de escape
-- [x] Identificadores e palavras-chave
-- [x] Operadores aritméticos, lógicos e de comparação
 - [x] Comentários de linha (`//`) e bloco (`/* */`)
 - [x] Tratamento de espaços em branco
-- [x] **24 testes** cobrindo todos os casos
+- [x] Completamente funcional
 
 ### ✅ Parser (Análise Sintática)
 - [x] Análise recursiva descendente
-- [x] Precedência correta de operadores
-- [x] Expressões aritméticas complexas
-- [x] Operadores lógicos e de comparação
-- [x] Suporte a parênteses
-- [x] **25 testes** validando parsing
+- [x] Completamente funcional
 
 ### ✅ Runtime/Interpretador
-- [x] Avaliação de expressões aritméticas
-- [x] Operações com strings (concatenação)
-- [x] Operadores lógicos com truthiness
-- [x] Comparações numéricas
 - [x] Tratamento robusto de erros de tipo
-- [x] **30 testes** cobrindo execução
+- [x] Completamente funcional
 
 ### ✅ Sistema de Erros
 - [x] **Códigos estruturados por categoria**:
@@ -169,6 +156,7 @@ dryad/
 - [x] `oak run <script>` - Executa scripts definidos
 - [x] `oak clean` - Limpa cache
 - [x] Arquivo `oaklibs.json` com configuração completa
+- [ ] Criação do registry (repositorio geral de dependencias)
 
 ## 🧪 Cobertura de Testes
 
@@ -275,10 +263,10 @@ true && false || !true
 
 ## 🔮 Próximas Funcionalidades
 
-- [ ] Declarações de variáveis (`let x = 5;`)
-- [ ] Estruturas de controle (`if`, `while`, `for`)
-- [ ] Funções definidas pelo usuário
-- [ ] Arrays e objetos
+- [X] Declarações de variáveis (`let x = 5;`)
+- [X] Estruturas de controle (`if`, `while`, `for`)
+- [X] Funções definidas pelo usuário
+- [X] Arrays e objetos
 - [ ] Sistema de módulos e imports
 - [ ] Instalação real de pacotes no Oak
 
